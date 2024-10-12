@@ -22,6 +22,11 @@ class Matrix:
         new_matrix = Matrix(self.width, self.height)
         new_matrix.grid = [row[:] for row in self.grid]
         return new_matrix
+    
+    def is_similar(self, other: 'Matrix') -> bool:
+        if self.width != other.width or self.height != other.height:
+            return False
+        return self.grid == other.grid
 
     def __str__(self) -> str:
         return '\n'.join(' '.join(['#' if cell == 1 else '.' for cell in row]) for row in self.grid)

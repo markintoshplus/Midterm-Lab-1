@@ -32,5 +32,12 @@ class MatrixPuzzle:
                         child = MatrixNode(new_matrix, node.remaining_bricks - 1)
                         node.children.append(child)
                         queue.append((child, brick_index + 1))
+
+        unique_solutions = []
+
+        for matrix in solutions:
+            if not any(matrix.is_similar(unique_matrix) for unique_matrix in unique_solutions):
+                unique_solutions.append(matrix)
         
-        return solutions
+        return unique_solutions
+    
